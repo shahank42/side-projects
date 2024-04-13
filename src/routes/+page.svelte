@@ -1,7 +1,14 @@
 <script>
-	import Button from "$lib/components/ui/button/button.svelte";
+	import GithubLoginButton from '$lib/components/github-login-button.svelte';
+	import LogoutButton from '$lib/components/logout-button.svelte';
 
+	export let data;
+	let { supabase, session } = data;
+	$: ({ supabase, session } = data);
 </script>
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<Button>Clicky</Button>
+
+{#if !session}
+	<GithubLoginButton {supabase} />
+{:else}
+	<LogoutButton {supabase} />
+{/if}
