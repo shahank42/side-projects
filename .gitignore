@@ -10,3 +10,4 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 bun.lockb
 pnpm-lock.yaml
+.vscode
