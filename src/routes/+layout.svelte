@@ -2,6 +2,7 @@
 	import '../app.pcss';
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import Navbar from '$lib/components/navbar.svelte';
 
 	export let data;
 
@@ -23,6 +24,9 @@
 	<title>SideProjects</title>
 </svelte:head>
 
-<div class="">
-	<slot />
-</div>
+<main class="relative flex min-h-screen flex-col">
+	<Navbar />
+	<div class="flex-1 flex-grow">
+		<slot />
+	</div>
+</main>
