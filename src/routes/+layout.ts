@@ -31,5 +31,9 @@ export const load = (async ({ fetch, data, depends }) => {
 		data: { session }
 	} = await supabase.auth.getSession();
 
-	return { supabase, session };
+	const user = session?.user
+	const githubUserDataRequest = await fetch(`https://api.github.com/users/${user?.user_metadata.user_name}`)
+
+	// might possibly remove user if not needed
+	return { githubUserData: await githubUserDataRequest.json(), user, supabase, session, };
 }) satisfies Load;

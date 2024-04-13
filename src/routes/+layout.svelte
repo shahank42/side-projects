@@ -6,8 +6,8 @@
 
 	export let data;
 
-	let { supabase, session } = data;
-	$: ({ supabase, session } = data);
+	let { supabase, session, user, githubUserData } = data;
+	$: ({ supabase, session, user, githubUserData } = data);
 
 	onMount(() => {
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
@@ -25,7 +25,7 @@
 </svelte:head>
 
 <main class="relative flex min-h-screen flex-col">
-	<Navbar />
+	<Navbar {githubUserData} />
 	<div class="flex-1 flex-grow">
 		<slot />
 	</div>
