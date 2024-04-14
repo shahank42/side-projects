@@ -43,9 +43,12 @@
     "@types/jsonwebtoken": "^9.0.6",
     "bits-ui": "^0.21.3",
     "clsx": "^2.1.0",
+    "formsnap": "^1.0.0",
     "jsonwebtoken": "^9.0.2",
     "svelte-radix": "^1.1.0",
+    "sveltekit-superforms": "^2.12.4",
     "tailwind-merge": "^2.2.2",
-    "tailwind-variants": "^0.2.1"
+    "tailwind-variants": "^0.2.1",
+    "zod": "^3.22.4"
   }
 }

@@ -1,16 +1,12 @@
 <script lang="ts">
 	import MaxWidthWrapper from './max-width-wrapper.svelte';
-	import * as Avatar from '$lib/components/ui/avatar';
-	import { page } from '$app/stores';
 	import { cn } from '$lib/utils';
+	import type { SupabaseClient } from '@supabase/supabase-js';
+	import NavbarUserMenu from './navbar-user-menu.svelte';
+	import { githubUserData } from '../stores/store';
 
-	export let githubUserData: any;
-
-	const {
-		avatar_url: avatarUrl,
-		name,
-		user_name: username
-	}: { avatar_url: string; name: string; user_name: string } = githubUserData;
+	export let supabase: SupabaseClient<any, 'public', any>;
+	// export let githubUserData: any;
 
 	const showLogo = false;
 	const showPfp = true;
@@ -29,16 +25,9 @@
 					>SideProjects</span
 				>
 			{/if}
-			{#if showPfp && $page.data.session}
-				<Avatar.Root>
-					<Avatar.Image src={avatarUrl} alt={username} />
-					<Avatar.Fallback
-						>{name
-							.split(' ')
-							.map((word) => word.charAt(0).toUpperCase())
-							.join('')}</Avatar.Fallback
-					>
-				</Avatar.Root>
+
+			{#if showPfp}
+				<NavbarUserMenu {supabase} />
 			{/if}
 		</div>
 	</MaxWidthWrapper>
