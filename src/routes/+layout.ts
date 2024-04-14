@@ -2,6 +2,7 @@ import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/publi
 import type { Load } from '@sveltejs/kit';
 // import type { LayoutLoad } from './$types'
 import { createBrowserClient, isBrowser, parse } from '@supabase/ssr';
+import type { User } from '@supabase/supabase-js';
 
 export const load = (async ({ fetch, data, depends }) => {
 	depends('supabase:auth');
@@ -31,9 +32,13 @@ export const load = (async ({ fetch, data, depends }) => {
 		data: { session }
 	} = await supabase.auth.getSession();
 
-	const user = session?.user
-	const githubUserDataRequest = await fetch(`https://api.github.com/users/${user?.user_metadata.user_name}`)
+	const user = session?.user;
+
+	// TODO: figure out how to deal with this extraneous request when user_name is undefined
+	const githubUserDataRequest = await fetch(
+		`https://api.github.com/users/${user?.user_metadata.user_name}`
+	);
 
 	// might possibly remove user if not needed
-	return { githubUserData: await githubUserDataRequest.json(), user, supabase, session, };
+	return { githubUserData: await githubUserDataRequest?.json(), user, supabase, session };
 }) satisfies Load;
