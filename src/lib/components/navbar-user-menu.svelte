@@ -5,30 +5,20 @@
 	import { page } from '$app/stores';
 	import type { SupabaseClient } from '@supabase/supabase-js';
 	import { githubUserData } from '../stores/store';
+	import UserAvatar from './user-avatar.svelte';
 
 	export let supabase: SupabaseClient<any, 'public', any>;
-	const avatarUrl: string = $githubUserData?.avatar_url as string;
-	const username: string = $githubUserData?.login as string;
-	const name: string = $githubUserData?.name as string;
 
 	async function signOut() {
 		const { error } = await supabase.auth.signOut();
-		$githubUserData = null
+		$githubUserData = null;
 	}
 </script>
 
 {#if $page.data.session}
 	<DropdownMenu.Root>
 		<DropdownMenu.Trigger>
-			<Avatar.Root>
-				<Avatar.Image src={avatarUrl} alt={username} />
-				<Avatar.Fallback
-					>{name
-						.split(' ')
-						.map((word) => word.charAt(0).toUpperCase())
-						.join('')}</Avatar.Fallback
-				>
-			</Avatar.Root>
+			<UserAvatar size={10} />
 		</DropdownMenu.Trigger>
 		<DropdownMenu.Content>
 			<DropdownMenu.Group>

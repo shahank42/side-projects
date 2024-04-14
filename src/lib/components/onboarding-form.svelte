@@ -3,7 +3,7 @@
 
 	export const onboardingFormSchema = z.object({
 		username: z.string(),
-		bio: z.string(),
+		// bio: z.string(),
 		twitterHandle: z.string()
 	});
 
@@ -18,6 +18,8 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { githubUserData } from '$lib/stores/store';
 	import { get } from 'svelte/store';
+	import Button from './ui/button/button.svelte';
+	import { Description } from 'formsnap';
 
 	export let data;
 
@@ -34,16 +36,20 @@
 			<Form.Label>Username</Form.Label>
 			<Input {...attrs} bind:value={$formData.username} />
 		</Form.Control>
+		<Form.Description>
+			You can use your GitHub username (@<span class="font-bold">{$githubUserData?.login}</span>),
+			or choose a different one!
+		</Form.Description>
 		<Form.FieldErrors />
 	</Form.Field>
 
-	<Form.Field form={onboardingForm} name="bio">
+	<!-- <Form.Field form={onboardingForm} name="bio">
 		<Form.Control let:attrs>
 			<Form.Label>Bio</Form.Label>
 			<Textarea {...attrs} bind:value={$formData.bio} />
 		</Form.Control>
 		<Form.FieldErrors />
-	</Form.Field>
+	</Form.Field> -->
 
 	<Form.Field form={onboardingForm} name="twitterHandle">
 		<Form.Control let:attrs>
@@ -51,6 +57,9 @@
 			<Input {...attrs} bind:value={$formData.twitterHandle} />
 		</Form.Control>
 		<Form.FieldErrors />
+		<Form.Description>
+			This is just so other users of this platform can connect with you. It's completely optional!
+		</Form.Description>
 	</Form.Field>
 
 	<Form.Button>Submit</Form.Button>

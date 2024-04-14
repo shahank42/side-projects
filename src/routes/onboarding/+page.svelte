@@ -1,6 +1,7 @@
 <script lang="ts">
 	import MaxWidthWrapper from '$lib/components/max-width-wrapper.svelte';
 	import OnboardingForm from '$lib/components/onboarding-form.svelte';
+	import UserAvatar from '$lib/components/user-avatar.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -14,13 +15,13 @@
 			>
 				Almost there!
 			</h2>
-			<p class="leading-6 text-sm text-muted-foreground">We just need some of your details.</p>
-			<p class="leading-6 text-sm text-muted-foreground">
-				Most of this stuff is auto-filled from your GitHub profile, however you may choose to edit
-				as you see fit.
-			</p>
+			<p class="text-sm leading-6 text-muted-foreground">We just need some details.</p>
 		</div>
 
-		<OnboardingForm data={data} />
+		<div class="flex w-full justify-center">
+			<UserAvatar size={32} />
+		</div>
+
+		<OnboardingForm {data} />
 	</main>
 </MaxWidthWrapper>

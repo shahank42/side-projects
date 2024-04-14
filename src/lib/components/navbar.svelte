@@ -4,30 +4,19 @@
 	import type { SupabaseClient } from '@supabase/supabase-js';
 	import NavbarUserMenu from './navbar-user-menu.svelte';
 	import { githubUserData } from '../stores/store';
+	import { page } from '$app/stores';
 
 	export let supabase: SupabaseClient<any, 'public', any>;
-	// export let githubUserData: any;
 
-	const showLogo = false;
-	const showPfp = true;
+	let showNavbar = false;
+	$: showNavbar = $page.url.pathname !== "/onboarding";
 </script>
 
 <header>
 	<MaxWidthWrapper>
-		<div
-			class={cn('flex h-20 items-center py-5', {
-				'justify-between': showLogo,
-				'justify-end': !showLogo
-			})}
-		>
-			{#if showLogo}
-				<span class="scroll-m-20 text-xl font-extrabold tracking-tight lg:text-2xl"
-					>SideProjects</span
-				>
-			{/if}
-
-			{#if showPfp}
-				<NavbarUserMenu {supabase} />
+		<div class="flex h-20 items-center justify-end py-5">
+			{#if showNavbar}
+			<NavbarUserMenu {supabase} />
 			{/if}
 		</div>
 	</MaxWidthWrapper>

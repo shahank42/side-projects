@@ -12,9 +12,9 @@
 	async function signInWithGithub() {
 		const { data, error } = await supabase.auth.signInWithOAuth({
 			provider: 'github',
-			options: {
-				redirectTo: `${$page.url.origin}/onboarding`
-			}
+			// options: {
+			// 	redirectTo: `${$page.url.origin}/onboarding`
+			// }
 		});
 
 		$githubUserData = ghUserData
