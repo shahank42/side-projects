@@ -6,7 +6,7 @@ export const load: LayoutServerLoad = async ({ locals: { safeGetSession } }) => 
 	const { session, user } = await safeGetSession();
 
 	if (session) {
-	
+		// TOOD: fix the logout-login no fetch bug
 		const octokit = new Octokit({
 			auth: PUBLIC_GITHUB_PAT
 		});

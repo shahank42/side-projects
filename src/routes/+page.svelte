@@ -16,35 +16,13 @@
 		invalidateAll();
 	});
 
-	// $username = session ? session.user.user_metadata.user_name : '';
 	async function signInWithGithub() {
 		const { data, error } = await supabase.auth.signInWithOAuth({
 			provider: 'github'
-			// options: {
-			// 	redirectTo: `${$page.url.origin}/onboarding`
-			// }
 		});
 
 		if (ghUserData) $githubUserData = ghUserData;
 	}
-
-	// let projects: any;
-	// const retrieveProjects = async () => {
-	// 	const { data } = await supabase.from('projects').select();
-	// 	projects = data;
-	// 	for (const project of projects) {
-	// 		const ghProjectDataReq = await fetch(`https://api.github.com/repos/${project.owner}/${project.repo_name}`)
-	// 		const ghProjectData = await ghProjectDataReq.json();
-	// 		project.github_forks = ghProjectData.forks;
-	// 		project.github_stars = ghProjectData.stargazers_count;
-	// 		project.github_last_commit = ghProjectData.updated_at;
-	// 		project.github_topics = ghProjectData.topics;
-
-	// 	}
-	// 	// console.log(projects)
-	// }
-
-	// $: if (session) retrieveProjects()
 </script>
 
 <MaxWidthWrapper>

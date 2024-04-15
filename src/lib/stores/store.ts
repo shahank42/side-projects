@@ -3,4 +3,4 @@ import type { GithubUserData } from '../../types/octokit';
 
 
 export const username = writable('');
-export const githubUserData = writable<GithubUserData>();
+export const githubUserData = writable<GithubUserData | null>();
