@@ -48,7 +48,7 @@
 </script>
 
 <MaxWidthWrapper>
-	<main class="flex flex-col items-center gap-7">
+	<main class="flex flex-col items-center gap-10 lg:gap-16">
 		<div class="flex flex-col items-center gap-2">
 			<span class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
 				SideProjects

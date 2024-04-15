@@ -36,7 +36,7 @@ export const formatDate = (inputDate: string) => {
     // Format the input date
     const formattedDate = inputDateObj.toLocaleDateString('en-GB', {
         day: 'numeric',
-        month: 'long',
+        month: 'short',
         year: 'numeric'
     });
 

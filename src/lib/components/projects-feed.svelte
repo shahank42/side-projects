@@ -5,8 +5,10 @@
 	export let projects: Project[];
 </script>
 
-{#if projects}
-	{#each projects as project (project.id)}
-		<ProjectCard {project} />
-	{/each}
-{/if}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+	{#if projects}
+		{#each projects as project (project.id)}
+			<ProjectCard {project} />
+		{/each}
+	{/if}
+</div>
