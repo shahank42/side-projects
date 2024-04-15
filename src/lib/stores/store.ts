@@ -1,10 +1,6 @@
 import { writable } from 'svelte/store';
+import type { GithubUserData } from '../../types/octokit';
+
 
 export const username = writable('');
-export const githubUserData = writable<{
-	name: string;
-	login: string;
-	avatar_url: string;
-	twitter_username: string;
-	bio: string;
-} | null>();
+export const githubUserData = writable<GithubUserData>();

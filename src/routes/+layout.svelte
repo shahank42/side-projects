@@ -10,7 +10,8 @@
 	let { supabase, session, user, githubUserData: ghUserData } = data;
 	$: ({ supabase, session, user, githubUserData: ghUserData } = data);
 
-	$githubUserData = ghUserData;
+	if (ghUserData)
+		$githubUserData = ghUserData;
 	
 	onMount(() => {
 		const { data } = supabase.auth.onAuthStateChange((event, _session) => {

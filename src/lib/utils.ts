@@ -7,6 +7,43 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
+export const formatDate = (inputDate: string) => {
+    const currentDate = new Date();
+    const inputDateObj = new Date(inputDate);
+
+    // Calculate the difference in milliseconds
+    const difference = currentDate.getTime() - inputDateObj.getTime();
+    
+    // Convert the difference to days
+    const daysDifference = Math.floor(difference / (1000 * 3600 * 24));
+
+    let agoString = '';
+
+    agoString = daysDifference === 1 ? 'day' : 'days';
+    // if (daysDifference < 7) {
+    //     agoString = daysDifference === 1 ? 'day' : 'days';
+    // } else if (daysDifference < 30) {
+    //     const weeksDifference = Math.floor(daysDifference / 7);
+    //     agoString = weeksDifference === 1 ? 'week' : 'weeks';
+    // } else if (daysDifference < 365) {
+    //     const monthsDifference = Math.floor(daysDifference / 30);
+    //     agoString = monthsDifference === 1 ? 'month' : 'months';
+    // } else {
+    //     const yearsDifference = Math.floor(daysDifference / 365);
+    //     agoString = yearsDifference === 1 ? 'year' : 'years';
+    // }
+
+    // Format the input date
+    const formattedDate = inputDateObj.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    });
+
+    return `${formattedDate} (${daysDifference} ${agoString} ago)`;
+}
+
+
 type FlyAndScaleParams = {
     y?: number;
     x?: number;

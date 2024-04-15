@@ -1,13 +1,16 @@
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
-import type { Load } from '@sveltejs/kit';
+// import type { Load } from '@sveltejs/kit';
 // import type { LayoutLoad } from './$types'
 import { createBrowserClient, isBrowser, parse } from '@supabase/ssr';
-import type { User } from '@supabase/supabase-js';
+// import type { User } from '@supabase/supabase-js';
+import type { Database } from '../types/supabase';
+import type { LayoutLoad } from './$types';
+import { redirect } from '@sveltejs/kit';
 
-export const load = (async ({ fetch, data, depends }) => {
+export const load: LayoutLoad = async ({ url, fetch, data, depends }) => {
 	depends('supabase:auth');
 
-	const supabase = createBrowserClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
+	const supabase = createBrowserClient<Database>(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
 		global: {
 			fetch
 		},
@@ -33,12 +36,25 @@ export const load = (async ({ fetch, data, depends }) => {
 	} = await supabase.auth.getSession();
 
 	const user = session?.user;
+	// console.log("+layout.ts: ", data?.githubUserData)
 
 	// TODO: figure out how to deal with this extraneous request when user_name is undefined
-	const githubUserDataRequest = await fetch(
-		`https://api.github.com/users/${user?.user_metadata.user_name}`
-	);
+	// const githubUserDataRequest = await fetch(
+	// 	`https://api.github.com/users/${user?.user_metadata.user_name}`
+	// );
+
+	if (session) {
+		const userId = session.user.id;
+		const { data: usersInProfilesTable } = await supabase
+			.from('profiles')
+			.select()
+			.eq('id', userId);
+		if (url.pathname === '/' && usersInProfilesTable?.length === 0) {
+			redirect(303, '/onboarding');
+			return { session, user, supabase };
+		}
+	}
 
 	// might possibly remove user if not needed
-	return { githubUserData: await githubUserDataRequest?.json(), user, supabase, session };
-}) satisfies Load;
+	return { githubUserData: data?.githubUserData, user, supabase, session };
+};
