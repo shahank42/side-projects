@@ -26,12 +26,12 @@
 </script>
 
 <MaxWidthWrapper>
-	<main class="flex flex-col items-center gap-10 lg:gap-16">
-		<div class="flex flex-col items-center gap-2">
-			<span class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+	<main class="flex flex-col items-center gap-10 lg:gap-32 py-20 pt-28 lg:pt-64">
+		<div class="flex flex-col items-center gap-5">
+			<span class="scroll-m-20 text-5xl text-balance font-extrabold lg:text-7xl">
 				SideProjects
 			</span>
-			<span class="text-center leading-7">
+			<span class="text-center text-lg">
 				The best place to showcase those old abandoned projects you spent days working on!
 			</span>
 		</div>

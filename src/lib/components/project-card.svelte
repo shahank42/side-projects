@@ -31,7 +31,7 @@
 			</span>
 		</div>
 
-		<div class="flex flex-wrap justify-center gap-2 md:flex-nowrap">
+		<div class="flex flex-col lg:flex-row justify-center gap-2">
 			<Button class="w-full">More details</Button>
 			<Button variant="outline" class="w-full">View on GitHub</Button>
 		</div>
