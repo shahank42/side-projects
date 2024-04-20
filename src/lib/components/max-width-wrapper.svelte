@@ -5,6 +5,6 @@
 	export { className as class };
 </script>
 
-<div class={cn('mx-auto w-full max-w-screen-xl px-4 md:px-32', className)}>
+<div class={cn('mx-auto w-full max-w-screen-xl px-4 md:px-24', className)}>
 	<slot />
 </div>

@@ -5,9 +5,8 @@ import { createBrowserClient, isBrowser, parse } from '@supabase/ssr';
 // import type { User } from '@supabase/supabase-js';
 import type { Database } from '../types/supabase';
 import type { LayoutLoad } from './$types';
-import { redirect } from '@sveltejs/kit';
 
-export const load: LayoutLoad = async ({ url, fetch, data, depends }) => {
+export const load: LayoutLoad = async ({  fetch, data, depends }) => {
 	depends('supabase:auth');
 
 	const supabase = createBrowserClient<Database>(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
@@ -43,17 +42,17 @@ export const load: LayoutLoad = async ({ url, fetch, data, depends }) => {
 	// 	`https://api.github.com/users/${user?.user_metadata.user_name}`
 	// );
 
-	if (session) {
-		const userId = session.user.id;
-		const { data: usersInProfilesTable } = await supabase
-			.from('profiles')
-			.select()
-			.eq('id', userId);
-		if (url.pathname === '/' && usersInProfilesTable?.length === 0) {
-			redirect(303, '/onboarding');
-			return { session, user, supabase };
-		}
-	}
+	// if (session) {
+	// 	const userId = session.user.id;
+	// 	const { data: usersInProfilesTable } = await supabase
+	// 		.from('profiles')
+	// 		.select()
+	// 		.eq('id', userId);
+	// 	if (url.pathname === '/' && usersInProfilesTable?.length === 0) {
+	// 		redirect(303, '/onboarding');
+	// 		return { session, user, supabase };
+	// 	}
+	// }
 
 	// might possibly remove user if not needed
 	return { githubUserData: data?.githubUserData, user, supabase, session };

@@ -1,6 +1,6 @@
 // src/app.d.ts
 
-import { SupabaseClient, Session } from '@supabase/supabase-js'
+import { SupabaseClient, Session, type User } from '@supabase/supabase-js'
 import type { Database } from './types/supabase';
 
 declare global {

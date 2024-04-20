@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-export const formatDate = (inputDate: string) => {
+export const formatDateWithAgo = (inputDate: string) => {
     const currentDate = new Date();
     const inputDateObj = new Date(inputDate);
 
@@ -44,12 +44,44 @@ export const formatDate = (inputDate: string) => {
 }
 
 
+export const formatDate = (inputDate: string) => {
+    const inputDateObj = new Date(inputDate);
+
+    // Format the input date
+    const formattedDate = inputDateObj.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    });
+
+    return formattedDate;
+}
+
+
 type FlyAndScaleParams = {
     y?: number;
     x?: number;
     start?: number;
     duration?: number;
 };
+
+export const getOwnerAndRepoNameFromGithubUrl = (url: string): { owner: string, repoName: string } | null => {
+    // Split the URL by "/"
+    const parts = url.split("/");
+
+    // Check if the URL is valid and contains the expected parts
+    if (parts.length >= 5 && parts[2] === "github.com") {
+        const owner = parts[3];
+        const repoName = parts[4];
+
+        // Remove any additional parts after the repo name
+        const repoNameParts = repoName.split("#")[0].split("?")[0];
+
+        return { owner, repoName: repoNameParts };
+    }
+
+    return null;
+}
 
 export const flyAndScale = (
     node: Element,
