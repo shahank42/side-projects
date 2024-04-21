@@ -202,6 +202,7 @@
 					</div>
 					<a
 						href={project.githubRepoLink}
+						target="_blank"
 						class={cn(buttonVariants({ variant: 'secondary' }), 'flex w-full gap-2 py-2 sm:w-fit')}
 					>
 						View on GitHub <ExternalLink class="size-4" />
@@ -212,9 +213,7 @@
 					<span class="inline text-sm">Tags:</span>
 					{#if topics.length !== 0}
 						{#each topics as topic}
-							<span class="rounded-full bg-accent px-3 py-1 text-xs text-accent-foreground"
-								>{topic}</span
-							>
+							<a href={`https://github.com/topics/${topic}`} target="_blank" class="rounded-full bg-accent px-3 py-1 text-xs text-accent-foreground">{topic}</a>
 						{/each}
 					{:else}
 						<span class="inline text-sm text-muted-foreground">No tags found!</span>

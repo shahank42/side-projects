@@ -33,9 +33,9 @@
 	<main class="flex flex-col items-center gap-12 pb-20 pt-12">
 		{#if !session}
 			<div
-				class="flex h-[60dvh] flex-col items-center justify-center gap-16 md:h-[80dvh] md:justify-start md:gap-0"
+				class="flex h-[60dvh] flex-col items-center justify-center gap-16 md:justify-start md:gap-0"
 			>
-				<div class="flex flex-col items-center justify-center gap-6 md:h-[50dvh]">
+				<div class="flex flex-col items-center justify-center gap-6 md:h-[40dvh]">
 					<span class="scroll-m-20 text-balance text-5xl font-extrabold lg:text-7xl">
 						SideProjects
 					</span>

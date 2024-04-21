@@ -26,12 +26,13 @@
 	}
 
 	const userId = $page.data.user?.id;
+
 </script>
 
 {#if $page.data.session}
 	<DropdownMenu.Root>
 		<DropdownMenu.Trigger>
-			<UserAvatar size={10} />
+			<UserAvatar size={10} url={$page.data.user?.user_metadata.avatar_url} />
 		</DropdownMenu.Trigger>
 		<DropdownMenu.Content align="end">
 			<DropdownMenu.Label>
