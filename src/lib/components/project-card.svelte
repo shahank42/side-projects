@@ -262,9 +262,9 @@
 					{/if}
 				</Button>
 			{/if}
-			<Button variant="outline" class="h-10 w-20 p-1 sm:w-36 md:h-12 md:w-20">
+			<!-- <Button variant="outline" class="h-10 w-20 p-1 sm:w-36 md:h-12 md:w-20">
 				<Share class="size-4" />
-			</Button>
+			</Button> -->
 
 			{#if project.user_id === session?.user.id}
 				<Dialog.Root bind:open={openDeleteDialog}>
