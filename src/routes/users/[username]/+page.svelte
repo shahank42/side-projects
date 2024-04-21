@@ -12,7 +12,8 @@
 
 	let session: Session | null = null;
 	$: session = data.session;
-	const viewerIsUser = data.userId === session?.user.id;
+	// const viewerIsUser = data.userId === session?.user.id;
+	// data.projects = []
 </script>
 
 <MaxWidthWrapper>
@@ -21,11 +22,16 @@
 			<div
 				class="flex flex-col items-start gap-4 md:w-full md:flex-row md:items-end md:justify-between"
 			>
-				<h2
-					class="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
-				>
-					{viewerIsUser ? 'My' : `@${data.projects[0].owner}'s`} Projects
-				</h2>
+				<span class="flex flex-col justify-between">
+					<h2
+						class="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
+					>
+						{`@${data.username}'s`} Projects
+					</h2>
+					{#if data.projects.length === 0}
+						<span class="">You have no projects! Try adding one.</span>
+					{/if}
+				</span>
 				{#if session}
 					<a
 						href="/add-project"
@@ -37,7 +43,9 @@
 				{/if}
 			</div>
 
-			<ProjectsFeed supabase={data.supabase} projects={data.projects} />
+			{#if data.projects.length !== 0}
+				<ProjectsFeed supabase={data.supabase} projects={data.projects} />
+			{/if}
 		</div>
 	</main>
 </MaxWidthWrapper>

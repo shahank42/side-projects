@@ -26,6 +26,7 @@
 	}
 
 	const userId = $page.data.user?.id;
+	const username = $page.data.user?.user_metadata.user_name;
 	const userEmail = $page.data.user?.email;
 </script>
 
@@ -59,7 +60,7 @@
 			<DropdownMenu.Item class="flex cursor-pointer gap-2" href="/">
 				<Home class="size-4" /> Home
 			</DropdownMenu.Item>
-			<DropdownMenu.Item class="flex cursor-pointer gap-2" href={`/users/${userId}`}>
+			<DropdownMenu.Item class="flex cursor-pointer gap-2" href={`/users/${username}`}>
 				<User2 class="size-4" /> My Projects
 			</DropdownMenu.Item>
 			<DropdownMenu.Item class="flex cursor-pointer gap-2" href="/my-bookmarks">

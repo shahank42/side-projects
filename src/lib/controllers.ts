@@ -107,7 +107,7 @@ export const fetchProjectsOfUser = async (supabase: SupabaseClient<Database>, us
 	const { data: dbProjects } = await supabase
 		.from('projects')
 		.select('*, likes(*), bookmarks(*)')
-		.eq('user_id', userId)
+		.eq('owner', userId)
 		.order('createdAt', { ascending: false });
 
 	const projects: Project[] = [];
