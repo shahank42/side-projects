@@ -81,6 +81,7 @@
 						</Select.Trigger>
 						<Select.Content>
 							<Select.Item value="Developing" label="Developing" />
+							<Select.Item value="On Hold" label="On Hold" />
 							<Select.Item value="Completed" label="Completed" />
 							<Select.Item value="Abandoned" label="Abandoned" />
 						</Select.Content>

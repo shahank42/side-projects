@@ -168,6 +168,7 @@
 						class={cn('size-2 rounded-full', {
 							'bg-red-600': project.status === 'Abandoned',
 							'bg-green-600': project.status === 'Developing',
+							'bg-orange-600': project.status === 'On Hold',
 							'bg-blue-600': project.status === 'Completed'
 						})}
 					/>
