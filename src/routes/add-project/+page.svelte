@@ -12,7 +12,7 @@
 </script>
 
 <MaxWidthWrapper>
-	<main class="flex flex-col gap-6 pt-12">
+	<main class="flex flex-col gap-6 pb-20 pt-12">
 		<div>
 			<span class="flex flex-col w-full gap-1">
 				<h2
