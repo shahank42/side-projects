@@ -14,10 +14,10 @@
 </script>
 
 {#if $page.data.session || showNavbar}
-	<header class="border-b border-input">
+	<header class="border-b border-input sticky top-0 bg-card">
 		<MaxWidthWrapper>
-			<div class="flex flex-wrap gap-4 items-center justify-between py-5">
-					<a href="/" class="scroll-m-20 text-3xl font-extrabold lg:text-4xl"> SideProjects </a>
+			<div class="flex flex-wrap gap-4 items-center justify-between py-2 lg:py-5">
+					<a href="/" class="scroll-m-20 text-2xl font-extrabold lg:text-4xl"> SideProjects </a>
 					<NavbarUserMenu {supabase} />
 			</div>
 		</MaxWidthWrapper>
