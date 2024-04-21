@@ -26,7 +26,7 @@
 	}
 
 	const userId = $page.data.user?.id;
-
+	const userEmail = $page.data.user?.email;
 </script>
 
 {#if $page.data.session}
@@ -37,7 +37,9 @@
 		<DropdownMenu.Content align="end">
 			<DropdownMenu.Label>
 				<p class="text-base font-bold text-secondary-foreground">@{$githubUserData?.login}</p>
-				<p class="text-sm text-muted-foreground">{$githubUserData?.email}</p>
+				{#if userEmail}
+					<p class="text-sm text-muted-foreground">{userEmail}</p>
+				{/if}
 			</DropdownMenu.Label>
 			<DropdownMenu.Separator />
 			<DropdownMenu.Sub>
@@ -60,8 +62,8 @@
 			<DropdownMenu.Item class="flex cursor-pointer gap-2" href={`/users/${userId}`}>
 				<User2 class="size-4" /> My Projects
 			</DropdownMenu.Item>
-			<DropdownMenu.Item class="cursor-pointer flex gap-2" href="/my-bookmarks">
-				<Bookmark class="size-4"/> My Bookmarks
+			<DropdownMenu.Item class="flex cursor-pointer gap-2" href="/my-bookmarks">
+				<Bookmark class="size-4" /> My Bookmarks
 			</DropdownMenu.Item>
 
 			<DropdownMenu.Separator />
