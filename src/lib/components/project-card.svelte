@@ -293,7 +293,7 @@
 
 			{#if project.user_id === session?.user.id}
 				<Dialog.Root bind:open={openDeleteDialog}>
-					<Dialog.Trigger>
+					<Dialog.Trigger asChild>
 						<Button variant="destructive" class="h-10 w-20 p-1 sm:w-36 md:h-12 md:w-20">
 							<Trash2 class="size-4" />
 						</Button>
