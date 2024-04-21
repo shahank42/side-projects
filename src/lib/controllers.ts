@@ -10,7 +10,7 @@ export const fetchBookmarks = async (supabase: SupabaseClient<Database>, current
 		.from('bookmarks')
 		.select('*, projects(*)')
 		.eq('user_id', currentUserId)
-		.order('createdAt', { ascending: false });
+		.order('created_at', { ascending: false });
 	const octokit = new Octokit({
 		auth: PUBLIC_GITHUB_PAT
 	});
