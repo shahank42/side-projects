@@ -39,8 +39,12 @@
 
 	let openDeleteDialog = false;
 
+	let isLiking = false;
+	let isBookmarking = false;
+
 	const handleLikeButtonClick = async () => {
 		if (session) {
+			isLiking = true;
 			if (project.userHasLiked) {
 				// console.log({ project_id: project.id, user_id: $page.data.session?.user.id as string });
 				// delete from likes table
@@ -51,6 +55,7 @@
 				if (!error) {
 					await invalidateAll();
 					toast(`Unliked ${project.title}`);
+					isLiking = false;
 				} else {
 					console.error(error);
 				}
@@ -62,6 +67,7 @@
 				if (!error) {
 					await invalidateAll();
 					toast(`Liked ${project.title}!`);
+					isLiking = false;
 				} else {
 					console.error(error);
 				}
@@ -71,6 +77,7 @@
 
 	const handleBookmarkButtonClick = async () => {
 		if (session) {
+			isBookmarking = true;
 			if (project.userHasBookmarked) {
 				const { error } = await supabase
 					.from('bookmarks')
@@ -79,6 +86,7 @@
 				if (!error) {
 					await invalidateAll();
 					toast(`Removed ${project.title} from bookmarks`);
+					isBookmarking = false;
 				} else {
 					console.error(error);
 				}
@@ -89,6 +97,7 @@
 				if (!error) {
 					await invalidateAll();
 					toast(`Added ${project.title} to bookmarks`);
+					isBookmarking = false;
 				} else {
 					console.error(error);
 				}
@@ -242,7 +251,7 @@
 				variant={liked ? 'secondary' : 'outline'}
 				on:click={handleLikeButtonClick}
 				class="flex h-10 w-20 gap-2 p-1 sm:w-36 md:h-12 md:w-20"
-				disabled={interactionButtonsDisabled}
+				disabled={interactionButtonsDisabled || isLiking}
 			>
 				<Heart class="size-4" />
 				{project.likesNumber}
@@ -251,7 +260,7 @@
 			{#if session}
 				<Button
 					variant={bookmarked ? 'secondary' : 'outline'}
-					disabled={interactionButtonsDisabled}
+					disabled={interactionButtonsDisabled || isBookmarking}
 					on:click={handleBookmarkButtonClick}
 					class="h-10 w-20 p-1 sm:w-36 md:h-12 md:w-20"
 				>
