@@ -1,38 +1,41 @@
-# create-svelte
+# SideProjects
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+> The best place to showcase those old projects you spent days working on!
 
-## Creating a project
+## What is SideProjects?
 
-If you're seeing this, you've probably already done this step. Congrats!
+SideProjects is a website that allows you post your dev side projects for the world to find and discover.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+You can view other people's side projects, and even like and bookmark them if they catch your fancy!
 
-## Developing
+## Gallery
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+![Screenshot_20240422_041226](https://github.com/shahank42/side-projects/assets/31540054/31bbdb03-4a09-46e2-995b-b0b2bbc4bc68)
 
-```bash
-npm run dev
+![Screenshot_20240422_041325](https://github.com/shahank42/side-projects/assets/31540054/614fc116-c790-4653-9bae-fd6912772e5e)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+![Screenshot_20240422_041627](https://github.com/shahank42/side-projects/assets/31540054/83267185-34b1-4770-847d-e031ad55b9cc)
 
-## Building
+|                                                                                                                               |                                                                                                                                  |
+| ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| ![Screenshot_20240422-041427](https://github.com/shahank42/side-projects/assets/31540054/b14c5030-d370-41b3-897b-5fd3c1229d2e)| ![Screenshot_20240422-041439](https://github.com/shahank42/side-projects/assets/31540054/05412caf-4a97-4b75-8e8a-dbeabd8bda6f) |
 
-To create a production version of your app:
 
-```bash
-npm run build
-```
 
-You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Features
+- CRUD compliant
+- Fully mobile responsive
+- Easy log in via. GitHub OAuth
+- Intuitive interface
+- Discoverability of projects
+
+---
+
+SideProjects was created using Svelte-kit, shadcn-svelte and Supabase! Really amazing tech.
+
+There's still soooooo many things left to perfect in this application. Contributions are always welcome :-)
+
+(I'll be adding a CONTRIBUTING.md file soon, as well as updating this README.md file).
