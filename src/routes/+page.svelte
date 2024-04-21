@@ -55,11 +55,16 @@
 		{/if}
 
 		<div class="flex w-full flex-col gap-10">
-			<h2
-				class="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
-			>
-				Latest Projects
-			</h2>
+			<span class="flex flex-col w-full gap-1">
+				<h2
+					class="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
+				>
+					Latest Projects
+				</h2>
+				<p class="text-muted-foreground">
+					Here you can see all the amazing side projects posted on this website.
+				</p>
+			</span>
 			{#await projects}
 				Loading projects...
 			{:then projectsAwaited}

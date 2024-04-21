@@ -14,9 +14,16 @@
 
 <MaxWidthWrapper>
 	<main class="flex flex-col gap-6 pt-12">
-		<h2 class="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-			My Bookmarks
-		</h2>
+		<span class="flex flex-col w-full gap-1">
+			<h2
+				class="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
+			>
+				My Bookmarks
+			</h2>
+			<p class="text-muted-foreground">
+				Found an interesting project? Bookmark it so you can find it here!
+			</p>
+		</span>
 
 		<ProjectsFeed supabase={data.supabase} {projects} />
 	</main>

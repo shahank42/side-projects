@@ -96,6 +96,7 @@
 					<Form.Label>Project Description</Form.Label>
 					<Textarea
 						{...attrs}
+						rows={5}
 						bind:value={$formData.description}
 						placeholder="Tell us about your cool project! You can be as descriptive or as brief as you want to."
 					/>
