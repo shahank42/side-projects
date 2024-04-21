@@ -123,7 +123,7 @@
 		</Card.Content>
 
 		<Card.Footer class="border-t px-6 py-4">
-			<Form.Button>Submit</Form.Button>
+			<Form.Button>Submit Project!</Form.Button>
 		</Card.Footer>
 	</form>
 </Card.Root>
