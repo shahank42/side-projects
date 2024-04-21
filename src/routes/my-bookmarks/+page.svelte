@@ -13,7 +13,7 @@
 </script>
 
 <MaxWidthWrapper>
-	<main class="flex flex-col gap-6 pt-12">
+	<main class="flex flex-col gap-6 pb-20 pt-12">
 		<span class="flex flex-col w-full gap-1">
 			<h2
 				class="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
