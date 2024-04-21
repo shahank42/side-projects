@@ -7,6 +7,7 @@
 	import {
 		Bookmark,
 		BookmarkCheck,
+		Edit,
 		ExternalLink,
 		GitFork,
 		Heart,
@@ -213,7 +214,11 @@
 					<span class="inline text-sm">Tags:</span>
 					{#if topics.length !== 0}
 						{#each topics as topic}
-							<a href={`https://github.com/topics/${topic}`} target="_blank" class="rounded-full bg-accent px-3 py-1 text-xs text-accent-foreground">{topic}</a>
+							<a
+								href={`https://github.com/topics/${topic}`}
+								target="_blank"
+								class="rounded-full bg-accent px-3 py-1 text-xs text-accent-foreground">{topic}</a
+							>
 						{/each}
 					{:else}
 						<span class="inline text-sm text-muted-foreground">No tags found!</span>
@@ -274,6 +279,17 @@
 			<!-- <Button variant="outline" class="h-10 w-20 p-1 sm:w-36 md:h-12 md:w-20">
 				<Share class="size-4" />
 			</Button> -->
+			{#if project.user_id === session?.user.id}
+				<a
+					href={`/edit-project/${project.id}`}
+					class={cn(
+						buttonVariants({ variant: 'outline' }),
+						'h-10 w-20 p-1 sm:w-36 md:h-12 md:w-20'
+					)}
+				>
+					<Edit class="size-4" />
+				</a>
+			{/if}
 
 			{#if project.user_id === session?.user.id}
 				<Dialog.Root bind:open={openDeleteDialog}>
