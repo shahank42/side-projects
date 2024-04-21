@@ -9,7 +9,7 @@
 	import UserAvatar from './user-avatar.svelte';
 	import { cn } from '$lib/utils';
 	import { invalidateAll } from '$app/navigation';
-	import { Bookmark, GithubIcon, Plus, User2 } from 'lucide-svelte';
+	import { Bookmark, GithubIcon, Home, Plus, User2 } from 'lucide-svelte';
 
 	export let supabase: SupabaseClient<any, 'public', any>;
 
@@ -52,6 +52,9 @@
 			<DropdownMenu.Separator />
 			<DropdownMenu.Item class="flex cursor-pointer gap-2" href="/add-project">
 				<Plus class="size-4" /> Add Project
+			</DropdownMenu.Item>
+			<DropdownMenu.Item class="flex cursor-pointer gap-2" href="/">
+				<Home class="size-4" /> Home
 			</DropdownMenu.Item>
 			<DropdownMenu.Item class="flex cursor-pointer gap-2" href={`/users/${userId}`}>
 				<User2 class="size-4" /> My Projects

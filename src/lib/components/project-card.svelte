@@ -177,7 +177,7 @@
 
 				<div class="flex justify-start gap-2">
 					<span
-						class="flex items-center gap-2 rounded-lg bg-yellow-300 px-3 py-2 text-sm text-secondary-foreground dark:text-primary-foreground"
+						class="flex items-center gap-2 rounded-lg bg-yellow-300 px-3 py-2 text-sm text-secondary-foreground dark:text-accent"
 					>
 						<Star class="size-4" />
 						{project.github_stars}
