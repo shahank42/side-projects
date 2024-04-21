@@ -9,8 +9,8 @@ export const fetchBookmarks = async (supabase: SupabaseClient<Database>, current
 	const { data: bookmarks } = await supabase
 		.from('bookmarks')
 		.select('*, projects(*)')
-		.eq('user_id', currentUserId);
-
+		.eq('user_id', currentUserId)
+		.order('createdAt', { ascending: false });
 	const octokit = new Octokit({
 		auth: PUBLIC_GITHUB_PAT
 	});
@@ -107,7 +107,7 @@ export const fetchProjectsOfUser = async (supabase: SupabaseClient<Database>, us
 	const { data: dbProjects } = await supabase
 		.from('projects')
 		.select('*, likes(*), bookmarks(*)')
-		.eq("user_id", userId)
+		.eq('user_id', userId)
 		.order('createdAt', { ascending: false });
 
 	const projects: Project[] = [];
@@ -149,7 +149,6 @@ export const fetchProjectsOfUser = async (supabase: SupabaseClient<Database>, us
 
 	return projects;
 };
-
 
 export const fetchProject = async (
 	supabase: SupabaseClient<Database>,
