@@ -1,7 +1,7 @@
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import type { PageServerLoad, Actions } from './$types.js';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import { addProjectFormSchema } from '$lib/components/add-project-form.svelte';
 import { fetchGithubRepoData } from '$lib/controllers.js';
 
@@ -37,7 +37,8 @@ export const actions: Actions = {
 
 		if (supabaseError) console.error(supabaseError);
 		else {
-			// redirect(303, '/');
+			// console.log(session.user?.user_metadata.user_name);
+			redirect(303, `/users/${session.user?.user_metadata.user_name}`);
 			// toast("Project successfully added!")
 			return { form, message: 'Project successfully added!' };
 		}
